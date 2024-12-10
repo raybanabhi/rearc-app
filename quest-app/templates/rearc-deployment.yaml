@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rearc-app
+  labels:
+    app: rearc-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: rearc-app
+  template:
+    metadata:
+      labels:
+        app: rearc-app
+    spec:
+      containers:
+        - name: rearc-app
+          image: abhisshe/rearc-app:0.0.0
+          ports:
+            - containerPort: 3000
+          env:
+            - name: SECRET_WORD
+              valueFrom:
+                secretKeyRef:
+                  name: rearc-secrets
+                  key: secret_word
+

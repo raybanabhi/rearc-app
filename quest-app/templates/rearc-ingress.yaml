@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: rearc-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - a68853886c5a847f4978db7e412d4d25-665547999.us-east-1.elb.amazonaws.com
+      secretName: myapp-tls
+  rules:
+    - host: a68853886c5a847f4978db7e412d4d25-665547999.us-east-1.elb.amazonaws.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: rearc-service
+                port:
+                  number: 80
