@@ -14,9 +14,10 @@ spec:
       labels:
         app: rearc-app
     spec:
+      {{- include "quest.app.pod-security-context" . | nindent 6 }}
       containers:
         - name: rearc-app
-          image: abhisshe/rearc-app:0.0.0
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           ports:
             - containerPort: 3000
           env:

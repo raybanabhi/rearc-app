@@ -1,4 +1,9 @@
 replicaCount: 2
+secret_word: ""
+ingress:
+  host: "a68853886c5a847f4978db7e412d4d25-665547999.us-east-1.elb.amazonaws.com"
+  secretname: "myapp-tls"
+
 image:
   repository: abhisshe/rearc-app
   tag: 0.0.0

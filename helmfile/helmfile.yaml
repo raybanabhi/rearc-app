@@ -21,3 +21,4 @@ releases:
   - name: quest-app
     namespace: default
     chart: ./quest-app
+    version: v0.0.0
