@@ -7,6 +7,8 @@ This project demonstrates the creation and deployment of a Docker-based applicat
 
 ## Docker Image Creation  
 
+[Docker file link](https://github.com/raybanabhi/quest)
+
 The Docker image for the Rearc app was created using the following steps:  
 1. **Dockerfile Creation**: Created a `Dockerfile` with all required steps for the app.  
 2. **Docker Build and Push**: Built and pushed the image to Docker Hub.  
@@ -17,12 +19,12 @@ docker build -t abhisshe/rearc-app:latest -f Dockerfile .
 docker push abhisshe/rearc-app:latest
 ```
 
-### Improvements:
+### Enhancements:
 1. CI-CD pipeline for new changes in repo
 2. Introduce scanning tools on PR/MR raise for linting & other vunralbilities check
 
 ## EKS Infrastructure
-The EKS infrastructure was provisioned using Terraform. Terraform code is maintained in a separate repository.
+The EKS infrastructure was provisioned using Terraform. Terraform code is maintained in a separate repository [Link](https://github.com/raybanabhi/eks-pub-terraform).
 
 ### Commands used
 - Validate
@@ -41,7 +43,7 @@ The EKS infrastructure was provisioned using Terraform. Terraform code is mainta
    ```bash
      terraform destroy -var-file "variables.tfvars" -auto-approve
    ```
-### Improvements in Terraform
+### Enhancement in Terraform
 1. **Environment Management:** Use Terraform workspaces to support multiple environments (e.g., dev, staging, production).
 2. **CI/CD Integration:** Automate Terraform commands via CI/CD:
      - Run terraform plan as a pre-check for PRs/MRs.
@@ -49,7 +51,7 @@ The EKS infrastructure was provisioned using Terraform. Terraform code is mainta
      - Execute terraform apply automatically post-merge.
  
 ## Application Deployment on EKS
-The application was deployed using Helm and Helmfile for streamlined management.
+The application was deployed using Helm and Helmfile for streamlined management [Link](https://github.com/raybanabhi/rearc-app).
 
 **Key Features**
 1. **Dedicated Repository:** Deployment-specific code is maintained in a separate repository.
@@ -61,7 +63,7 @@ The application was deployed using Helm and Helmfile for streamlined management.
     - A helmfile is created to run all helm charts
     - I have used Ingress-Controller, Certs manager for tls certs
 
-### Improvements in Deployment
+### Enhancement in Deployment
 
 1. **Monitoring:** Implement Grafana and Prometheus for robust monitoring.
 2. **Continuous Deployment:** Use ArgoCD for automated and continuous deployments.
